@@ -1,0 +1,9 @@
+strict digraph {
+  PowerPiperCrowdsale
+  require
+  hasEnded
+  getTokenAmount [color=gray]
+  forwardFunds [color=gray]
+  PowerPiperCrowdsale -> require
+}
+

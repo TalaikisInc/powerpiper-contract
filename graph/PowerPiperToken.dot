@@ -1,0 +1,9 @@
+strict digraph {
+  existedLoss
+  recoverBalance
+  require
+  RecoverBalance
+  recoverBalance -> require
+  recoverBalance -> RecoverBalance
+}
+

@@ -1,0 +1,75 @@
+{
+  "name": "powerpiper-contract",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:contract": "solium -d contracts/",
+    "lint:contract:fix": "solium -d contracts/ --fix",
+    "compile:local": "rm -rf build/ && truffle compile --network development",
+    "compile:ropsten": "rm -rf build/ && truffle compile --network ropsten",
+    "compile:rinkeby": "rm -rf build/ && truffle compile --network rinkeby",
+    "migrate:local": "truffle migrate --network development --reset",
+    "migrate:ropsten": "truffle migrate --network ropsten --reset",
+    "migrate:rinkeby": "truffle migrate --network rinkeby --reset",
+    "coverage": "./node_modules/.bin/solidity-coverage",
+    "rpc": "ganache-cli --defaultBalanceEther 1000000 --gasPrice 1 --gasLimit 0xfffffffffff --seed --networkId 336",
+    "rpc:rinkeby": "geth --datadir=~/.ethereum --rinkeby --rpc --rpcapi db,eth,net,web3,personal",
+    "graph": "solgraph ./contracts/PowerPiperCrowdsale.sol > ./graph/PowerPiperCrowdsale.dot && dot -Tpng ./graph/PowerPiperCrowdsale.dot > ./graph/PowerPiperCrowdsale.png && solgraph ./contracts/PowerPiperToken.sol > ./graph/PowerPiperToken.dot && dot -Tpng ./graph/PowerPiperToken.dot > ./graph/PowerPiperToken.png",
+    "test": "truffle test",
+    "copy": "cp -R build/contracts/*.json app/src/contracts/",
+    "flatten": "truffle-flattener contracts/PowerPiperCrowdsale.sol >> contracts/flat/PowerPiperFlattenedCrowdsale.sol && truffle-flattener contracts/PowerPiperToken.sol >> contracts/flat/PowerPiperFlattenedToken.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/powerpiper/contract.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts"
+  ],
+  "bugs": {
+    "url": "https://github.com/powerpiper/contract/issues"
+  },
+  "author": "Tadas Talaikis, PowerPiper Team <info@talaikis.com>",
+  "license": "GPLv3",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cross-env": "^5.1.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^5.0.1",
+    "truffle": "^4.1.8",
+    "truffle-contract": "^3.0.5",
+    "truffle-hdwallet-provider": "0.0.5",
+    "truffle-hdwallet-provider-privkey": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "ganache-cli": "^6.1.0",
+    "json-loader": "^0.5.4",
+    "solgraph": "^0.2.6",
+    "solidity-coverage": "^0.4.15",
+    "solium": "^1.1.6",
+    "truffle-test-utils": "^0.1.0"
+  }
+}
